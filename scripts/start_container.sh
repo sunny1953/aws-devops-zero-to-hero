@@ -5,4 +5,5 @@ set -e
 docker pull sunny1953/simple-python-app
 
 # Run the Docker image as a container
-docker run -d -p 5000:5000 sunny1953/simple-python-app
+docker run -d -p 5000:5000 simple-python-app
+
