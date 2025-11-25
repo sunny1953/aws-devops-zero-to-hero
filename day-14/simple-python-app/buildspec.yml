@@ -14,13 +14,13 @@ phases:
   pre_build:
     commands:
       - echo "Installing dependencies..."
-      - pip install -r requirements.txt
+      - pip install -r day-14/simple-python-app/requirements.txt
 
   build:
     commands:
       - echo "Building Docker image..."
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
-      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" .
+      - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest" day-14/simple-python-app/
       - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/simple-python-flask-app:latest"
 
   post_build:
@@ -29,6 +29,6 @@ phases:
 
 artifacts:
   files:
-    - ../../appspec.yml
-    - ../../scripts/*
-    - ./**
+    - appspec.yml
+    - scripts/*
+    - day-14/simple-python-app/**
